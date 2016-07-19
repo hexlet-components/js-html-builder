@@ -10,33 +10,9 @@
 //   ]],
 // ];
 
-declare type Ast = {
-  type: 'tagsList' | 'tag',
-  name: string,
-  options: {},
-  body: string,
-  children: [Ast]
-};
-
-const iterAst = (ast: Ast) => {
-  switch (ast.type) {
-    case 'tagsList':
-      return `${ast.children.map(iterAst).join('')}`;
-    case 'tag':
-      const attrsLine = Object.keys(ast.options).reduce((acc, key) =>
-        `${acc} ${key}="${ast.options[key]}"`, '');
-      const value = ast.children.length > 0 ? ast.children.map(iterAst).join('') : ast.body;
-      return `<${ast.name}${attrsLine}>${value}</${ast.name}>`;
-    default:
-      // nothing
-  }
-};
+import buildNode from './buildNode';
 
 const iter = (data: [any]) => {
-  if (data[0] instanceof Array) {
-    return { type: 'tagsList', name: '', options: {}, body: '', children: data.map(iter) };
-  }
-
   let value;
   let options = {};
   if (data.length === 3) {
@@ -57,16 +33,11 @@ const iter = (data: [any]) => {
     children = [];
   }
 
-  return { type: 'tag', name: data[0], body, options, children };
+  return buildNode(data[0], options, body, children);
 };
 
 export default {
-  build(data: [any]) {
-    const result = iter(data);
-
-    // const pry = require('pryjs');
-    // eval(pry.it);
-
-    return iterAst(result);
+  parse(data: [any]) {
+    return iter(data);
   },
 };

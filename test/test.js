@@ -4,12 +4,11 @@ import assert from 'assert';
 import { describe, it } from 'mocha';
 
 import HexletHtmlBuilder from '../src/index';
-
-// { type: tagsList, body: [ { type: tag, name: <>, body: <>, options: {} ] }
+import buildNode from '../src/buildNode';
 
 describe('HtmlBuilder', () => {
-  it('#build', () => {
-    const data = [
+  it('#parse', () => {
+    const data = ['html', [
       ['meta', [
         ['title', 'hello, hexlet!'],
       ]],
@@ -17,14 +16,45 @@ describe('HtmlBuilder', () => {
         ['h1', { class: 'header' }, 'html builder example'],
         ['div', [
           ['span', 'span text'],
+          ['hr'],
+        ]],
+      ]],
+    ]];
+
+    const ast = HexletHtmlBuilder.parse(data);
+    const expected = buildNode('html', {}, '', [
+      buildNode('meta', {}, '', [
+        buildNode('title', {}, 'hello, hexlet!'),
+      ]),
+      buildNode('body', {}, '', [
+        buildNode('h1', { class: 'header' }, 'html builder example'),
+        buildNode('div', {}, '', [
+          buildNode('span', {}, 'span text'),
+          buildNode('hr'),
+        ]),
+      ]),
+    ]);
+
+    assert.deepEqual(ast, expected);
+  });
+
+  it('#toString', () => {
+    const data = ['html', [
+      ['meta', [
+        ['title', 'hello, hexlet!'],
+      ]],
+      ['body', [
+        ['h1', { class: 'header' }, 'html builder example'],
+        ['div', [
+          ['hr'],
           ['span', 'span text2'],
         ]],
       ]],
+    ],
     ];
 
-    const result = HexletHtmlBuilder.build(data);
-    const expected = `<meta><title>hello, hexlet!</title></meta><body><h1 class="header">html builder example</h1><div><span>span text</span><span>span text2</span></div></body>`;
-
-    assert.equal(result, expected);
+    const ast = HexletHtmlBuilder.parse(data);
+    const expected = `<html><meta><title>hello, hexlet!</title></meta><body><h1 class="header">html builder example</h1><div><hr /><span>span text2</span></div></body></html>`;
+    assert.equal(ast.toString(), expected);
   });
 });
