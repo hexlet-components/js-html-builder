@@ -1,6 +1,6 @@
 // @flow
 
-// { type: tagsList, body: [ { type: tag, name: <>, body: string, options: {}, children: [] ] }
+// { type: tagsList, body: [ { type: tag, name: <>, body: string, attributes: {}, children: [] ] }
 // const data = [
 //   ['meta', [
 //     ['title', 'hello, hexlet!'],
@@ -12,14 +12,42 @@
 
 import buildNode from './buildNode';
 
+// declare type Ast = {
+//   type: 'tagsList' | 'tag',
+//   name: string,
+//   attributes: {},
+//   body: string,
+//   children: [Ast]
+// };
+
+// const iterAst = (ast: Node) => {
+//   switch (ast.type) {
+//     case 'tagsList':
+//       return `${ast.children.map(iterAst).join('')}`;
+//     case 'tag': {
+//       const attrsLine = Object.keys(ast.attributes).reduce((acc, key) =>
+//         `${acc} ${key}="${ast.attributes[key]}"`, '');
+//       const value = ast.children.length > 0 ? ast.children.map(iterAst).join('') : ast.body;
+//       return `<${ast.name}${attrsLine}>${value}</${ast.name}>`;
+//     }
+//     default:
+//       // nothing
+//   }
+// };
+
 const iter = (data: [any]) => {
   let value;
-  let options = {};
+  let attributes = {};
   if (data.length === 3) {
     value = data[2];
-    options = data[1];
+    attributes = data[1];
   } else if (data.length === 2) {
-    value = data[1];
+    if (data[1] instanceof Array || (typeof data[1] === 'string')) {
+      value = data[1];
+    } else {
+      value = '';
+      attributes = data[1];
+    }
   } else {
     value = '';
   }
@@ -33,7 +61,7 @@ const iter = (data: [any]) => {
     children = [];
   }
 
-  return buildNode(data[0], options, body, children);
+  return buildNode(data[0], attributes, body, children);
 };
 
 export default {

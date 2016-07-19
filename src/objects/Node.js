@@ -1,11 +1,11 @@
 // @flow
 
-export default function Node(name: string, options: {}) {
+export default function Node(name: string, attributes: {}) {
   this.name = name;
-  this.options = options;
+  this.attributes = attributes;
 }
 
-Node.prototype.getOptionsAsLine = function getOptionsAsLine() {
-  return Object.keys(this.options).reduce((acc, key) =>
-    `${acc} ${key}="${this.options[key]}"`, '');
+Node.prototype.getAttributesAsLine = function getAttributesAsLine() {
+  return Object.keys(this.attributes).reduce((acc, key) =>
+    `${acc} ${key}="${this.attributes[key]}"`, '');
 };

@@ -2,15 +2,15 @@
 
 export default class {
   name: string;
-  options: Object;
+  attributes: {};
 
-  constructor(name: string, options: Object) {
+  constructor(name: string, attributes: {}) {
     this.name = name;
-    this.options = options;
+    this.attributes = attributes;
   }
 
-  getOptionsAsLine() {
-    return Object.keys(this.options).reduce((acc, key) =>
-      `${acc} ${key}="${this.options[key]}"`, '');
+  getAttributesAsLine() {
+    return Object.keys(this.attributes).reduce((acc, key) =>
+      `${acc} ${key}="${this.attributes[key]}"`, '');
   }
 }

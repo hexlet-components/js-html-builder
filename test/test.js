@@ -44,17 +44,17 @@ describe('HtmlBuilder', () => {
         ['title', 'hello, hexlet!'],
       ]],
       ['body', [
+        ['div', { class: 'separator' }],
         ['h1', { class: 'header' }, 'html builder example'],
         ['div', [
-          ['hr'],
+          ['img', { class: 'image', href: '#' }],
           ['span', 'span text2'],
         ]],
       ]],
-    ],
-    ];
+    ]];
 
     const ast = HexletHtmlBuilder.parse(data);
-    const expected = `<html><meta><title>hello, hexlet!</title></meta><body><h1 class="header">html builder example</h1><div><hr /><span>span text2</span></div></body></html>`;
+    const expected = `<html><meta><title>hello, hexlet!</title></meta><body><div class="separator"></div><h1 class="header">html builder example</h1><div><img class="image" href="#"><span>span text2</span></div></body></html>`;
     assert.equal(ast.toString(), expected);
   });
 });
