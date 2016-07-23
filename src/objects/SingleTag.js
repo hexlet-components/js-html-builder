@@ -1,5 +1,3 @@
-
-
 import Node from './Node';
 
 export default function SingleTag(name: string, attributes: {} = {}) {

@@ -5,6 +5,6 @@ import SingleTag from './classes/SingleTag';
 
 const singleTagsList = new Set(['hr', 'br', 'img']);
 export default (name: string, ...args: any) => {
-  const f = singleTagsList.has(name) ? SingleTag : PairedTag;
-  return new f(name, ...args);
+  const C = singleTagsList.has(name) ? SingleTag : PairedTag;
+  return new C(name, ...args);
 };

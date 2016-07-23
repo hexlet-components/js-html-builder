@@ -36,6 +36,7 @@ import buildNode from './buildNode';
 // };
 
 const iter = (data: [any]) => {
+  const name = data[0];
   let value;
   let attributes = {};
   if (data.length === 3) {
@@ -61,7 +62,7 @@ const iter = (data: [any]) => {
     children = [];
   }
 
-  return buildNode(data[0], attributes, body, children);
+  return buildNode(name, attributes, body, children);
 };
 
 export default {
