@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "documentation": "documentation",
     "test": "mocha --compilers js:babel-core/register",
     "gulp": "gulp",
     "eslint": "eslint",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/hexlet-components/js-html-builder#readme",
   "devDependencies": {
+    "documentation": "v4.0.0-beta11",
     "pryjs": "*",
     "babel-cli": "*",
     "babel-core": "*",
