@@ -10,7 +10,8 @@ PairedTag.prototype = Object.create(Node.prototype);
 
 PairedTag.prototype.toString = function toString() {
   const value = this.children.length > 0
-    ? this.children.map((child) => child.toString()).join('')
+    ? this.children.join('')
     : this.body;
+
   return `<${this.name}${this.getAttributesAsLine()}>${value}</${this.name}>`;
 };

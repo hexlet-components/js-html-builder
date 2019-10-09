@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import parse from '../src/index';
+import parse from '../src';
 
 describe('HtmlBuilder', () => {
   it('#parse', () => {
@@ -18,7 +18,7 @@ describe('HtmlBuilder', () => {
     ]];
     const ast = parse(data);
 
-    const expectedFixturePath = path.join(__dirname, '__fixtures__', 'expected');
+    const expectedFixturePath = path.join('__fixtures__', 'expected');
     const rawData = fs.readFileSync(expectedFixturePath, 'utf-8');
     const expected = JSON.parse(rawData);
     expect(ast).toEqual(expected);
