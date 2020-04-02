@@ -1,3 +1,5 @@
+// @ts-check
+
 export default function Node(name, attributes) {
   this.name = name;
   this.attributes = attributes;
