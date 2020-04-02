@@ -1,3 +1,5 @@
+// @ts-check
+
 import { identity } from 'lodash';
 import buildNode from './buildNode';
 

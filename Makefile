@@ -1,5 +1,5 @@
 install:
-	yarn
+	npm install
 
 docs:
 	mkdir -p docs

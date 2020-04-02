@@ -1,3 +1,5 @@
+// @ts-check
+
 import PairedTag from './classes/PairedTag';
 import SingleTag from './classes/SingleTag';
 

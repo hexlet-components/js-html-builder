@@ -1,3 +1,5 @@
+// @ts-check
+
 import Node from './Node';
 
 export default function PairedTag(name, attributes = {}, body = '', children = []) {
