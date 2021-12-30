@@ -1,6 +1,6 @@
 # js-html-builder
 
-[![github action status](../../workflows/Node%20CI/badge.svg)](../../actions)
+[![github action status](https://github.com/hexlet-components/js-html-builder/workflows/Node%20CI/badge.svg)](../../actions)
 
 ## Install
 
