@@ -1,11 +1,11 @@
 # js-html-builder
 
-[![github action status](https://github.com/hexlet-components/js-html-builder/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-components/js-html-builder/actions)
+[![github action status](../../workflows/Node%20CI/badge.svg)](../../actions)
 
 ## Install
 
 ```sh
-npm install @hexlet/async
+npm install @hexlet/html-builder
 ```
 
 ## Usage example
@@ -38,7 +38,7 @@ ast.toString();
 // </div></body></html>'
 ```
 
-For more information, see the [Full Documentation](https://github.com/hexlet-components/js-html-builder/tree/master/docs)
+For more information, see the [Full Documentation](docs)
 
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=js-html-builder)
 
