@@ -6,8 +6,12 @@
   "scripts": {
     "documentation": "documentation",
     "test": "jest --colors",
+    "preBuild": "rm -rf dist",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
+  },
+  "hooks": {
+    "before:release": ["npm run lint", "npm test", "npm run build"]
   },
   "files": [
     "dist"
@@ -37,6 +41,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jest": "^25.3.2",
     "jest": "^27.4.5",
-    "jest-cli": "^27.4.5"
+    "jest-cli": "^27.4.5",
+    "release-it": "^14.11.8"
   }
 }
