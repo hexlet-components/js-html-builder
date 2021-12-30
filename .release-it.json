@@ -1,0 +1,9 @@
+{
+  "hooks": {
+    "before:release": [
+      "make lint",
+      "make test",
+      "make build"
+    ]
+  }
+}
