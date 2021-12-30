@@ -7,11 +7,10 @@
     "documentation": "documentation",
     "test": "jest --colors",
     "preBuild": "rm -rf dist",
-    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
-    "prepublishOnly": "npm run build"
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline"
   },
   "hooks": {
-    "before:release": [
+    "before:init": [
       "npm run lint",
       "npm test",
       "npm run build"
